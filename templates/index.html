@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<head>
+    <title>Article Summary</title>
+</head>
+<body>
+    <h1>Get Article Info</h1>
+    <form method="post">
+        <label for="url">Enter Article URL:</label><br>
+        <input type="text" id="url" name="url"><br><br>
+        <input type="submit" value="Get Info">
+    </form>
+    <hr>
+    {% if article_info %}
+        <h2>Title: {{ article_info['title'] }}</h2>
+        <h3>Authors: 
+            {% for author in article_info['authors'] %}
+                {{ author }},
+            {% endfor %}
+        </h3>
+        <p>Summary: {{ article_info['summary'] }}</p>
+    {% endif %}
+</body>
+</html>
